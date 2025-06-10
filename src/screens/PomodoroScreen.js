@@ -10,6 +10,7 @@ export default function PomodoroScreen() {
     Notifications.requestPermissionsAsync();
   }, []);
 
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Pomodoro Timer</Text>
