@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import PomodoroScreen from '../screens/PomodoroScreen';
+import AddHabitScreen from '../screens/AddHabitScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,10 @@ export default function AppNavigator() {
           component={PomodoroScreen}
           options={{ title: 'Pomodoro Timer' }}
         />
+        <Stack.Screen 
+        name="AddHabit" 
+        component={AddHabitScreen} 
+        options={{ title: 'Dodaj nawyk' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

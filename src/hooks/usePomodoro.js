@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as Notifications from 'expo-notifications';
 import { scheduleNotification, registerForPushNotificationsAsync } from '../services/notifications';
 
-useEffect(() => {
-  registerForPushNotificationsAsync();
-}, []);
+
 
 const notifyAfterPomodoro = () => {
   scheduleNotification('Pomodoro zakończone!', 'Zrób przerwę lub rozpocznij kolejną sesję', 1);
@@ -13,6 +11,9 @@ const notifyAfterPomodoro = () => {
 const DEFAULT_POMODORO_TIME = 25 * 60;
 
 export default function usePomodoro(initialTime = DEFAULT_POMODORO_TIME) {
+  useEffect(() => {
+  registerForPushNotificationsAsync();
+}, []);
   const [secondsLeft, setSecondsLeft] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);

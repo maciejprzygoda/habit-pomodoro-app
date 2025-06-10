@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useContext } from 'react';
 import { HabitContext } from '../contexts/HabitContext';
+import styles from '../styles/PomodoroScreenStyles';
 
-const { habits, addHabit, toggleHabit, deleteHabit } = useContext(HabitContext);
 
 export default function Timer({ duration, onComplete }) {
+  const { habits, addHabit, toggleHabit, deleteHabit } = useContext(HabitContext);
   const [secondsLeft, setSecondsLeft] = useState(duration);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -39,14 +40,4 @@ export default function Timer({ duration, onComplete }) {
       <Button title={isRunning ? 'Pause' : 'Start'} onPress={() => setIsRunning(!isRunning)} />
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
-  time: {
-    fontSize: 48,
-    marginBottom: 10,
-  },
-});
+};
