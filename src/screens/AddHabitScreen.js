@@ -22,7 +22,7 @@ export default function AddHabitScreen() {
   const [showTimePicker, setShowTimePicker] = useState(false);
   const navigation = useNavigation();
 
-  // Funkcja do planowania powiadomienia - zwraca notificationId
+  // planowanie powiadomienia - zwraca notificationId
   const scheduleHabitNotification = async (habitName, time) => {
     const now = new Date();
     const notificationTime = new Date(
@@ -49,7 +49,7 @@ export default function AddHabitScreen() {
     });
     return id;
   };
-
+  //dodawanie nawyku
   const handleAddHabit = async () => {
     if (newHabit.trim()) {
       let notificationId = null;
@@ -66,7 +66,7 @@ export default function AddHabitScreen() {
           reminderTime.getMinutes().toString().padStart(2, "0");
       }
 
-      // Dodaj pełny obiekt nawyku z info o powiadomieniu!
+      // dodaje pełny obiekt nawyku z info o powiadomieniu
       addHabit({
         name: newHabit.trim(),
         reminderEnabled,
@@ -92,6 +92,7 @@ export default function AddHabitScreen() {
         />
       </View>
 
+      {/* Suwak i napis w jednej linii */}
       <View style={styles.reminderRow}>
         <Text style={styles.reminderText}>Przypomnienie</Text>
         <Switch value={reminderEnabled} onValueChange={setReminderEnabled} />
@@ -123,8 +124,6 @@ export default function AddHabitScreen() {
           )}
         </View>
       )}
-
-
 
       <Button title="Dodaj" onPress={handleAddHabit} />
 

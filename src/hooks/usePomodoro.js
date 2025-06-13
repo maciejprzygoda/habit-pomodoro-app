@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as Notifications from 'expo-notifications';
-import { scheduleNotification, registerForPushNotificationsAsync } from '../services/notifications';
+import { scheduleNotification, registerNotificationsAsync } from '../services/notifications';
 
 
 
@@ -12,7 +12,7 @@ const DEFAULT_POMODORO_TIME = 25 * 60;
 
 export default function usePomodoro(initialTime = DEFAULT_POMODORO_TIME) {
   useEffect(() => {
-  registerForPushNotificationsAsync();
+  registerNotificationsAsync();
 }, []);
   const [secondsLeft, setSecondsLeft] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);

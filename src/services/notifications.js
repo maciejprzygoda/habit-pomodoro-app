@@ -12,7 +12,7 @@ Notifications.setNotificationHandler({
 });
 
 // Rejestracja urządzenia do powiadomień
-export const registerForPushNotificationsAsync = async () => {
+export const registerNotificationsAsync = async () => {
   if (!Device.isDevice) {
     alert('Powiadomienia działają tylko na fizycznym urządzeniu');
     return;

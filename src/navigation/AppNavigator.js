@@ -1,9 +1,10 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import PomodoroScreen from '../screens/PomodoroScreen';
-import AddHabitScreen from '../screens/AddHabitScreen';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "../screens/HomeScreen";
+import PomodoroScreen from "../screens/PomodoroScreen";
+import AddHabitScreen from "../screens/AddHabitScreen";
+import HabitStatsScreen from "../screens/HabitStatsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,19 +15,20 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Nawyki' }}
+          options={{ title: "Nawyki" }}
         />
         <Stack.Screen
           name="Pomodoro"
           component={PomodoroScreen}
-          options={{ title: 'Pomodoro Timer' }}
+          options={{ title: "Pomodoro Timer" }}
         />
-        <Stack.Screen 
-        name="AddHabit" 
-        component={AddHabitScreen} 
-        options={{ title: 'Dodaj nawyk' }} />
+        <Stack.Screen
+          name="AddHabit"
+          component={AddHabitScreen}
+          options={{ title: "Dodaj nawyk" }}
+        />
+        <Stack.Screen name="HabitStats" component={HabitStatsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-  
 }

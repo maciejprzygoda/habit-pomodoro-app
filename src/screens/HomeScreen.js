@@ -15,8 +15,35 @@ export default function HomeScreen() {
   const navigation = useNavigation();
   const { habits, toggleHabit, deleteHabit } = useContext(HabitContext);
 
+  // LICZENIE POZIOMU (każde 10 wykonanych nawyków = 1 poziom)
+  // Zakładam, że każdy habit ma doneDates: ["2024-06-13", ...] lub doneToday: boolean
+  // Jeśli masz inną strukturę, napisz!
+  const totalDone = habits
+    ? habits.reduce((acc, habit) => {
+        if (Array.isArray(habit.doneDates)) {
+          return acc + habit.doneDates.length;
+        }
+        return acc;
+      }, 0)
+    : 0;
+  const level = Math.floor(totalDone / 10);
+
+  // LICZENIE ZREALIZOWANYCH DZIŚ
+  const today = new Date().toISOString().slice(0, 10);
+  const doneToday = habits
+    ? habits.filter(
+        (habit) =>
+          Array.isArray(habit.doneDates) && habit.doneDates.includes(today)
+      ).length
+    : 0;
+
   return (
     <View style={styles.container}>
+      {/* Nagłówek poziomu */}
+      <Text style={[styles.title, { marginBottom: 10 }]}>
+        Twój poziom: {level}
+      </Text>
+
       <Text style={styles.title}>Moje Cele</Text>
 
       <FlatList
@@ -27,6 +54,10 @@ export default function HomeScreen() {
             habit={item}
             onToggle={toggleHabit}
             onDelete={deleteHabit}
+            onShowStats={(habitId) =>
+              navigation.navigate("HabitStats", { habitId })
+            }
+            
           />
         )}
         ListEmptyComponent={
@@ -48,6 +79,13 @@ export default function HomeScreen() {
       >
         <Text style={styles.pomodoroText}>🕒 Przejdź do Pomodoro</Text>
       </TouchableOpacity>
+
+      {/* LICZNIK NA DOLE */}
+      <View style={{ alignItems: "center", marginTop: 10, marginBottom: 10 }}>
+        <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+          Zrealizowane {doneToday}/{habits ? habits.length : 0}
+        </Text>
+      </View>
     </View>
   );
-};
+}

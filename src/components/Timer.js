@@ -5,11 +5,14 @@ import { HabitContext } from '../contexts/HabitContext';
 import styles from '../styles/PomodoroScreenStyles';
 
 
+
 export default function Timer({ duration, onComplete }) {
   const { habits, addHabit, toggleHabit, deleteHabit } = useContext(HabitContext);
   const [secondsLeft, setSecondsLeft] = useState(duration);
   const [isRunning, setIsRunning] = useState(false);
 
+
+  //useeffect uruchamiajacy odlicznie zegara pomodoro
   useEffect(() => {
     let interval = null;
     if (isRunning) {
@@ -28,6 +31,7 @@ export default function Timer({ duration, onComplete }) {
     return () => clearInterval(interval);
   }, [isRunning]);
 
+  //format wyswietlania zegara
   const formatTime = () => {
     const min = Math.floor(secondsLeft / 60);
     const sec = secondsLeft % 60;
