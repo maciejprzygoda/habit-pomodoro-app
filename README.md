@@ -1,68 +1,123 @@
-# Habit Pomodoro App
 
-Aplikacja mobilna zbudowana w **React Native (Expo)** służąca do:
-- śledzenia nawyków (habit tracker),
-- zarządzania czasem metodą **Pomodoro**,
-- działania offline z wykorzystaniem AsyncStorage.
+# HabitPomodoroApp
 
----
-
-#  Funkcje
-
--  Dodawanie i odhaczanie codziennych nawyków
--  Timer Pomodoro z odliczaniem
--  Przechowywanie danych lokalnie (AsyncStorage)
--  Context API do zarządzania stanem
--  Nawigacja pomiędzy ekranami (React Navigation)
+Aplikacja mobilna do śledzenia nawyków z techniką Pomodoro  
+Stworzona w React Native
 
 ---
 
-##  Uruchomienie projektu
+## Spis treści
 
-1. **Zainstaluj Expo CLI (jeśli jeszcze nie masz):**
+- [Opis](#opis)
+- [Funkcje](#funkcje)
+- [Technologie](#technologie)
+- [Instalacja i uruchomienie](#instalacja-i-uruchomienie)
+- [Struktura projektu](#struktura-projektu)
+- [Zrzuty ekranu](#zrzuty-ekranu)
+- [Autor](#autor)
+- [Budowanie APK](#budowanie-apk)
 
-```bash
-npm install -g expo-cli
+---
 
-    Zainstaluj zależności:
+## Opis
 
-npm install
+**HabitPomodoroApp** to prosta i funkcjonalna aplikacja mobilna do śledzenia realizacji nawyków oraz pracy w systemie Pomodoro.  
+Dzięki niej możesz budować dobre nawyki, ustawiać powiadomienia, przeglądać swoje statystyki i korzystać z timera Pomodoro.
 
-    Uruchom aplikację:
+---
 
-npx expo start
+## Funkcje
 
-    Skanuj kod QR w aplikacji Expo Go na telefonie
+- Dodawanie, usuwanie i oznaczanie nawyków jako wykonane
+- Przypomnienia o nawykach (powiadomienia push)
+- Licznik zrealizowanych nawyków i poziom użytkownika (gamifikacja)
+- Statystyki każdego nawyku: wykonania tygodniowe, miesięczne i ogólne
+- Timer Pomodoro do wydajnej nauki/pracy
+- Przechowywanie danych lokalnie (tryb offline)
+- Przejrzysty interfejs i responsywny układ
+- Obsługa różnych rozmiarów ekranu
 
-Wymagane biblioteki
+---
 
-Projekt korzysta z:
+## Technologie
 
-    expo
+- **React Native**
+- **Expo**
+- React Navigation
+- Context API (zarządzanie stanem globalnym)
+- AsyncStorage (przechowywanie danych)
+- Expo Notifications (powiadomienia)
+- DateTimePicker
+- Flexbox (responsywny layout)
+- Ikony: @expo/vector-icons
 
-    react-native
+---
 
-    @react-navigation/native
+## Instalacja i uruchomienie
 
-    @react-navigation/native-stack
+1. **Klonuj repozytorium:**
+   ```bash
+   git clone https://github.com/maciejprzygoda/habit-pomodoro-app.git
+   cd habit-pomodoro-app
+   ```
 
-    @react-native-async-storage/async-storage
+2. **Zainstaluj zależności:**
+   ```bash
+   npm install
+   ```
 
-Struktura folderów
+3. **Uruchom aplikację:**
+   ```bash
+   npx expo start
+   ```
 
+4. **Testuj na telefonie (Expo Go) lub emulatorze Android/iOS.**
+
+---
+
+## Struktura projektu
+
+```
 HabitPomodoroApp/
-├── App.js
-├── package.json
 ├── src/
-│   ├── components/       # Komponenty UI (np. HabitItem)
-│   ├── contexts/         # Context API (HabitContext)
-│   ├── navigation/       # React Navigation
-│   ├── screens/          # Ekrany: Home, Pomodoro
-│   ├── services/         # (opcjonalnie) np. powiadomienia
-│   ├── utils/            # Narzędzia, np. storage.js
+│   ├── components/    # Komponenty UI (HabitItem, Timer, itp.)
+│   ├── contexts/      # Context API do zarządzania stanem
+│   ├── navigation/    # Konfiguracja nawigacji
+│   ├── screens/       # Główne ekrany aplikacji (Home, AddHabit, Pomodoro, Statystyki)
+│   ├── styles/        # Pliki ze stylami
+├── App.js
+├── README.md
+├── package.json
+└── ...
+```
+
+## Budowanie APK
+
+1. **Zainstaluj Expo CLI globalnie (jeśli jeszcze nie masz):**
+   ```bash
+   npm install -g expo-cli
+   ```
+
+2. **Zaloguj się do Expo (jeśli nie masz konta, załóż na https://expo.dev):**
+   ```bash
+   expo login
+   ```
+
+3. **W katalogu projektu uruchom komendę:**
+   ```bash
+   expo build:android
+   ```
+   - Wybierz opcję APK lub AAB (APK działa na większości urządzeń, AAB jest wymagany do Google Play).
+   - Poczekaj, aż Expo zbuduje aplikację (link do pliku .apk lub .aab pojawi się w konsoli oraz na Twoim koncie Expo).
+
+4. **Pobierz gotowy plik APK/AAB i zainstaluj na swoim telefonie lub prześlij do Google Play!**
+
+Więcej o publikowaniu aplikacji:  
+https://docs.expo.dev/classic/building-standalone-apps/
+
 
 Autor
-M.PRzygoda
+M.Przygoda
  Czerwiec 2025
 
 
