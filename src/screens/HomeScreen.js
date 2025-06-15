@@ -16,8 +16,6 @@ export default function HomeScreen() {
   const { habits, toggleHabit, deleteHabit } = useContext(HabitContext);
 
   // LICZENIE POZIOMU (każde 10 wykonanych nawyków = 1 poziom)
-  // Zakładam, że każdy habit ma doneDates: ["2024-06-13", ...] lub doneToday: boolean
-  // Jeśli masz inną strukturę, napisz!
   const totalDone = habits
     ? habits.reduce((acc, habit) => {
         if (Array.isArray(habit.doneDates)) {
